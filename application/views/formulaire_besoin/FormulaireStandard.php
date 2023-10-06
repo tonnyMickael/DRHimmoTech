@@ -20,6 +20,7 @@
         <?php include("application/views/pop_up/Formulaire_pop_up.php"); ?>
 	</div>
 	<div id="intro">
+		
 	</div>
 	<script type="text/javascript" src="<?php echo base_url("assets/js/scriptDRH.js"); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/js/scriptFormulaire.js"); ?>"></script>
