@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/indexDRH.css"); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/pop-up.css"); ?>">
-	<title>DRH Page</title>
+	<link rel="icon" href="<?php echo base_url("assets/image/3.png"); ?>">
+	<title>DRH Page ImmoTech</title>
 </head>
 <body>
 	<div id="head">
