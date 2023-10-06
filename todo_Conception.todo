@@ -1,0 +1,143 @@
+projet web application for SRH:
+    tache:
+    1.collecte de besoin de chaque departement
+        @description 
+        **interface standard pour la recolte des besoin base sur: 
+            .le volume de tache
+            .le volume d'heure
+            .homme jour par heure
+
+            @TACHE_DEV
+                NB:composant par defaut un menu (lien vers formulaire et annonce)
+
+            @formulaire   
+            -interface formulaire de demande:
+		        .choix du departement (type texte)(menu deroulant) ==> ajoute d'un fonctionnalite Js couple au poste vacant
+		        .poste vacant(type texte) ==> mode menu deroulant  
+		        .justification du besoin(type texte)
+		        .duree estimee(type number)
+		        .competence requise(type texte) ==> mode de saisie separer avec une virgule les competence requise pour le poste 
+		        .diplome requise (menu deroulant) ==> saisir dans le code directement avec values predefinis (type int) pour analyse
+                    valeur par defaut saisie: 1 ==> cepe
+                                              2 ==> bepc 
+                                              3 ==> bacc 
+                                              4 ==> licence
+                                              5 ==> doctorat     
+		        .experience requise (menu deroulant) ==> saisir dans le code directement avec values predefinir (type int) pour analyse
+                    valeur par defaut saisie: 1 ==> 1 à 5
+                                              2 ==> 5 à 10
+                                              3 ==> 10 à 15  
+
+            -interface de critaire:
+                .diplome minimal (menu deroulant) ==> saisir dans le code directement avec values predefinis pour analyse
+                .experience minimal (menu deroulant) ==> saisir dans le code directement avec values predefinis pour analyse
+
+            -metier: 
+                .controlleur de preparation de la page formulaire 
+                    (NAME: "ControleInitFormulaire"  FONCTION: preparer les information necessaire au formulaire)
+                    fonctionnalite JS a concevoir NAME_FUNCTION: "deptPoste"
+
+                .creer un modele NAME: "technique" dans laquelle il y aura les fonctions "litteraleDiplome(argument  diplome int)" et "litteraleExperience(argument experience int)"
+                    
+                    funtion litteraleDiplome(argument diplome int){
+                        litteral <== type string
+                        /* 
+                            doit choisir entre les valeur litteral par defaut:
+                                1.cepe
+                                2.bepc
+                                3.bacc
+                                4.licence 
+                                5.doctorat 
+                        */
+                        return litteral
+                    }
+
+                    function litteraleExperience(argument experience int){
+                        litterale <== type string
+                        /*
+                            doit choisir entre les valeur litteral par defaut:
+                                1. 1 à 5
+                                2. 5 à 10
+                                3. 5 a 15
+                        */
+                        return litteral
+                    }
+
+                .controlleur de stockage des besoin selon les departement
+                    (NAME: "ControleBesoinDept"  FONCTION: envoyer les informations dans la base)
+                    insertion des demandes dans la table besoinDept NAME_FUNCTION: "InsertBesoinDept"
+                    insertion critaire dans la table critaireFiltre NAME_FUNCTION: "InsertCritaire"
+
+            -base:
+                .table departement
+                    .idDept Primary key auto-increment
+                    .NomDepartement varchar(50)
+                    .referenceDept varchar(10) ==> exemple: Departement Ressource Humaine, reference => DRH
+
+                .table postpardepartement
+                    .IdPost primary key auto-increment
+                    .Dept foreign key references departement(idDept)
+                    .NomPoste varchar(50)
+                    
+                .table besoinDept
+                    .idBesoin primary key auto-increment
+                    .Poste foreign key reference postpardepartement(IdPost)
+                    .justification varchar(500)
+                    .dureEstime int
+                    .diplome int
+                    .Experience int
+
+                .table critaireFiltre
+                    .IdCritaire primary key auto-increment
+                    .diplome int 
+                    .experience int
+
+    2.generer les annonces de chaque departement
+        @description
+        **interface de visualidsation des besoins base sur:
+            .les information dans la table besoinDept 
+            .seulement accessible pour CRUD que pour le DRH verrouillage par authentification (facultatif a faire seulement que par approbation des membre)
+
+            @TACHE_DEV
+                NB:composant par defaut un menu (lien vers formulaire et annonce)
+
+            @annonce
+            -interface liste des annonces generer:
+                _liste des titre d'annonce par les departement ==> exemple de titre: reference_departement poste vacant "nom_du_poste"(lien)
+
+            -interface detail de chaque annonce:
+                _pdf des annonces
+
+            -metier:
+                .creer model NAME: "ListAnnonce" avec les fonctions "titleAnnonce()" et "generateAnnonce(argument id int)"
+
+                    function titleAnnonce(){
+                        recuperer dans les base avec la view generateTitle
+                        title[][] <== table a deux dimension
+                            title[][id]
+                            title[][title] => reference_dans_base." poste vacant ".poste_dans_base (string)
+                        return title; 
+                    }
+
+                    function generateAnnonce(argument id int){
+                        recuperer dans la base les info sur la table besoinDept avec l'id
+                        
+                    }
+
+                .controlleur preparation des annonces
+                    (NAME: "controleAnnonce" FONCTION: generer les titre des annonces et la liste des annonces)
+            
+            -base:
+                -create view generateTitle as select 
+                            d.referenceDept as ReferenceDept, 
+                            p.NomPoste as NomPoste, 
+                            b.idBesoin as idBesoin 
+                        from departement d 
+                        join postpardepartement p on d.idDept = p.Dept
+                        join besoinDept b on p.idPost = b.Poste; 
+                    
+
+    3.formulaire de collecte du cv
+    4.analyse des cv recu avec teste de macth avec les critaires donnee par les services
+    5.generer les questionnaire des services
+    6.programmer le calendrier des entretiens
