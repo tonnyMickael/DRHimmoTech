@@ -35,11 +35,12 @@ projet web application for SRH:
             -metier: 
                 .controlleur de preparation de la page formulaire 
                     (NAME: "ControleInitFormulaire"  FONCTION: preparer les information necessaire au formulaire)
-                    fonctionnalite JS a concevoir NAME_FUNCTION: "deptPoste"
+                    fonctionnalite js a concevoir NAME_FUNCTION: "deptPoste"
+                    fonctionnalite ajax qui envoie et recuperer un requete
 
-                .creer un modele NAME: "technique" dans laquelle il y aura les fonctions "litteraleDiplome(argument  diplome int)" et "litteraleExperience(argument experience int)"
+                .creer un modele NAME: "Literal" dans laquelle il y aura les fonctions "litteraleDiplome(argument  diplome int)" et "litteraleExperience(argument experience int)"
                     
-                    funtion litteraleDiplome(argument diplome int){
+                    funtion literaleDiplome(argument diplome int){
                         litteral <== type string
                         /* 
                             doit choisir entre les valeur litteral par defaut:
@@ -52,7 +53,7 @@ projet web application for SRH:
                         return litteral
                     }
 
-                    function litteraleExperience(argument experience int){
+                    function literaleExperience(argument experience int){
                         litterale <== type string
                         /*
                             doit choisir entre les valeur litteral par defaut:
@@ -73,6 +74,7 @@ projet web application for SRH:
                     .idDept Primary key auto-increment
                     .NomDepartement varchar(50)
                     .referenceDept varchar(10) ==> exemple: Departement Ressource Humaine, reference => DRH
+                    .mot_de_passe varchar(10)
 
                 .table postpardepartement
                     .IdPost primary key auto-increment

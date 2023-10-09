@@ -1,0 +1,71 @@
+#intros{
+	width: 900px;
+	height: 620px;
+	border: 1px solid;
+	text-align: center;
+	margin: auto;
+	margin-top: 45px;
+}
+.label{
+	font-size: 20px;
+	font-style: italic;
+	font-family: "arial", sans-serif;
+}
+p{ 
+	text-align:left;
+	margin-left: 90px;
+}
+#entete{
+ 	text-align: center;
+ 	margin-bottom: -25px;
+ 	font-size: 40px;
+}
+#service{
+	width: 450px;
+	height: 35px;
+	margin-left: 45px;
+	text-align: center;
+}
+#post{
+	width: 450px;
+	height: 35px;
+	margin-left: 110px;
+	text-align: center;
+}
+#justification{
+	width: 445px;
+	height: 130px;
+	margin-left: 145px;	
+}
+#date{
+ 	width: 450px;
+	height: 35px;
+	margin-left: 100px;
+	text-align: center;
+}
+#diplom{
+	width: 450px;
+	height: 35px;
+	margin-left: 75px;
+	text-align: center;
+}
+#experience{
+	width: 450px;
+	height: 35px;
+	margin-left: 40.5px;
+	text-align: center;
+}
+#competence{
+	width: 445px;
+	height: 90px;
+	margin-left: 25px;
+}
+#button{
+ 	float: left;
+ 	margin-top: 25px;
+ 	margin-left: 90px;
+ 	width: 150px;
+ 	height: 35px;
+ 	font-size: 20px;
+ 	font-style: oblique;
+}
