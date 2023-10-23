@@ -1,3 +1,4 @@
+
 #head {
 	height: 100px;
 	border-style: outset;
@@ -20,6 +21,12 @@
 	height: 25px;
 	display: inline-block;
 	padding: 5px;
+	margin-left: 10px;
+}
+.links{
+	display: inline-block;
+	margin-left: 25px;	
+	margin-right: 25px;
 }
 #intro{
 	width: 900px;
@@ -35,4 +42,15 @@
 }
 #intro button{
 	font-size: 17px;
+}
+#accueil{
+	text-align: center;
+	padding: 5px;
+	width: 100px;
+	height: 25px;
+	border: 1.5px black solid;
+	background-color: red;
+	font-size: 25px;
+	border-radius: 10.5px;
+	position: fixed;
 }

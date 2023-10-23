@@ -20,8 +20,8 @@ class Welcome extends CI_Controller {
 	 */
 	public function index(){
 		$this->load->model('Litteral','model');
-		$ref['data'] = $this->model->RefDept();
-		$this->session->set_userdata('referenceDept',$ref);
+		$Dept['Service'] = $this->model->DepartementName();
+		$this->session->set_userdata('deptName',$Dept);
 		$this->load->view('index');
 	}		
 }

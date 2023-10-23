@@ -1,3 +1,7 @@
+<?php
+	$deptNom = $this->session->userdata('DeptDemande');
+	$posteDept = $this->session->userdata('refPosteDept');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,13 +16,12 @@
 <body>
 	<div id="head">
 		<img src="<?php echo base_url("assets/image/4.png"); ?>">
-		<button id="PopupDRH"><div class="link">Voir les annonces reçu</div></button>
-		<button id="PopupForm"><div class="link">Formulaire des besoins</div></button>
+		<button id="Critepop"><div class="link">ajouter critère de sélection</div></button>
+		<a href="<?php echo base_url('Question/CreationQuestion'); ?>" class="links">Créer les questionnaires</a>
 		
     	<!-- /////////////////////////////////////////////////////////////////////////DRH POP uP -->
-    	<?php include("application/views/pop_up/DRH_pop_up.php");?>
-    	<!-- ////////////////////////////////////////////////////////////////////////Form POP UP -->
-        <?php include("application/views/pop_up/Formulaire_pop_up.php"); ?>
+    	<?php include("application/views/pop_up/PopUP_critere.php");?>
+
 	</div>
 	<div>
 		<h1 id="entete">Formulaire des besoins de votre Departement</h1>
@@ -27,22 +30,22 @@
 		<a href="<?php echo base_url('welcome/index'); ?>">Retour</a>
 	</div>
 	<div id="intros">		
-		<form action="" method="post">
+		<form action="<?php echo base_url('BesoinDept/besoin'); ?>" method="post">
 			<p>
 				<label class="label">Votre Departement:</label>
 					<select name="dept" id="service">
-						<option>DRH</option>
-						<option>DLF</option>
-						<option>DGP</option>
-						<option>DLG</option>
+						<?php for ($i=0; $i < count($deptNom['Service']) ; $i++) { ?>
+							<option value="<?php echo $deptNom['Service'][$i]['id']; ?>"><?php echo $deptNom['Service'][$i]['Nom_departement']; ?>(<?php echo $deptNom['Service'][$i]['Reference'];?>)</option>
+						<?php } ?>
 					</select>
 			</p>
 			<p>
 				<label class="label">Poste vacant:</label> 
 					<select name="poste" id="post">
-						<option>poste</option>
-						<option>poste</option>
-						<option>poste</option>
+						<option>Poste</option>
+						<?php for ($j=0; $j < count($posteDept['poste']); $j++) { ?>
+							<option value="<?php echo $posteDept['poste'][$j]['id']; ?>"><?php echo $posteDept['poste'][$j]['Poste']; ?></option>
+						<?php } ?>
 					</select>
 			</p>
 			<p>
@@ -50,15 +53,20 @@
 					<input type="text" name="justificatif" id="justification" placeholder="justificatif des besoins de votre departement">
 			</p>
 			<p>
-				<label class="label">Date debut: </label>
-					<input type="date" id="date" name="dateDebut">
-
+				<label class="label">Date debut contrat: </label>
+					<input type="date" class="date" name="dateDebut">
 			</p>
 			<p>
-				<label class="label">Date fin: </label>
-					<input type="date" id="date" name="dateFin">
-
+				<label class="label">Date fin contrat: </label>
+					<input type="date" class="date" name="dateFin">
 			</p>
+			<p>
+				<label class="label">Date fin de recrutement: </label>
+					<input type="date" class="date" name="dateEnd">
+			<p>
+			<p>
+				<label class="label">Date limite de recrutement: </label>
+					<input type="date" class="date" name="dateLimit">
 			<p>
 				<label class="label">Diplôme  requise:</label> 
 					<select name="diplome" id="diplom">
@@ -85,7 +93,8 @@
 			<input type="submit" value="Valider" id="button">				  				
 		</form>
 	</div>
-	<script type="text/javascript" src="<?php echo base_url("assets/js/scriptDRH.js"); ?>"></script>
-	<script type="text/javascript" src="<?php echo base_url("assets/js/scriptFormulaire.js"); ?>"></script>
+
+	<script type="text/javascript" src="<?php echo base_url("assets/js/scriptMenu.js"); ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/js/scriptCritere.js"); ?>"></script>
 </body>
 </html>

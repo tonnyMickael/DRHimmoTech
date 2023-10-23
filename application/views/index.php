@@ -22,7 +22,7 @@
 	</div>
 	<div id="intro">
 		<h1>BIENVENUE SUR LA PAGE DU DEPARTEMENT DES RESSOURCES HUMAINES</h1>
-		<button> <a href="#"><div class="link">Annonce de recrutement</div></a></button>
+		<button> <a href="<?php echo base_url("ListeRecrutement/listAnnonce");?>"><div class="link">Annonce de recrutement</div></a></button>
 	</div>
 
 	<script type="text/javascript" src="<?php echo base_url("assets/js/scriptDRH.js"); ?>"></script>

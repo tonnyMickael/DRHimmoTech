@@ -5,7 +5,7 @@ use DRH;
 -- table departement
 CREATE TABLE departement(
 	id  int auto_increment PRIMARY KEY,
-	Nom_departement varchar(20),
+	Nom_departement varchar(100),
 	Reference varchar(10),
 	Mot_de_passe varchar(10)
 );
@@ -13,7 +13,7 @@ CREATE TABLE departement(
 INSERT INTO departement VALUES (null,"Departement des Ressources Humaines","DRH","drhAdmin01");
 INSERT INTO departement VALUES (null,"Departement des Logistiques et des Finances","DLF","dlfAdmin02");
 INSERT INTO departement VALUES (null,"Departement des Services Informatiques","DSI","dsiAdmin03");
-INSERT INTO departement VALUES (null,"Departement des Services de Produiction","DSP","dspAdmin04");
+INSERT INTO departement VALUES (null,"Departement des Services de Production","DSP","dspAdmin04");
 
 -- table poste
 CREATE TABLE posteDepartement(
@@ -46,11 +46,57 @@ INSERT INTO posteDepartement VALUES (null,4,'chef services');
 -- table besoin
 CREATE TABLE besoin(
 	id int auto_increment PRIMARY KEY,
+	dept int,
 	poste int, 
 	justificatif varchar(500),
-	durer_estime date,
+	dateDebut date,
+	dateFin date,
+	date_fin_recrutement date,
+	date_limit_recrutement date,
 	diplom int,
 	Experience int,
+	competence varchar(500),
+	FOREIGN KEY (dept) REFERENCES departement(id),
 	FOREIGN KEY (poste) REFERENCES posteDepartement(id)
+);
+
+--  table critere
+CREATE TABLE critere(
+	id int auto_increment PRIMARY KEY,
+	besoin int,
+	genre int,
+	langue int,
+	niveau int,
+	diplome int,
+	experience int,
+	FOREIGN KEY (besoin) REFERENCES besoin(id)
+);
+
+-- table annonce
+CREATE TABLE annonce(
+	id int auto_increment PRIMARY KEY,
+	besoin int,
+	datecreation date,
+	FOREIGN KEY (besoin) REFERENCES besoin(id)
+);
+
+-- table Cv
+CREATE TABLE cv(
+	id int auto_increment PRIMARY KEY,
+	Nom varchar(100),
+	Prenom varchar(100),
+	Adresse varchar(100),
+	telephone int,
+	photo_identiter varchar(100),
+	objectifs varchar(500),
+	exp_pro varchar(500),
+	diplome int,
+	dateObtention date,
+	justificatif varchar(100),
+	compte_pro varchar(500),
+	langue int,
+	niveau int,
+	sport int,
+	activite int
 );
 

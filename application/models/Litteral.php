@@ -8,29 +8,36 @@
  	
 
  	public function DepartementName(){
- 		$sql = "SELECT Nom_departement,Reference FROM departement";
+ 		$sql = "SELECT id,Nom_departement,Reference FROM departement";
  		$query = $this->db->query($sql);
  		$tab = array();
- 		foreach ($query->result_array() as $value) {
- 			$tab[] = $value; 
- 		}
+ 		foreach ($query->result_array() as $value) { $tab[] = $value; }
  		return $tab;
  	}
+    
+    public function DemandeDept($id){
+        $sql = "SELECT id,Nom_departement,Reference FROM departement WHERE id = ?";
+        $query = $this->db->query($sql,array($id));
+        $dept = array();
+        foreach ($query->result_array() as $val) {
+            $dept[] = $val;
+        }
+        return $dept;
+    }
 
- 	public function RefDept(){
- 		$sql = "SELECT id,Reference FROM departement";
- 		$query = $this->db->query($sql);
+ 	public function RefPost($deptID){
+ 		$sql = "SELECT id,Poste FROM posteDepartement WHERE idDept = ?";
+ 		$query = $this->db->query($sql, array($deptID));
  		$ref = array();
- 		foreach ($query->result_array() as $key) {
- 			$ref[] = $key;
- 		}
+ 		foreach ($query->result_array() as $key) { $ref[] = $key; }
  		return $ref;
  	}
 
+   
+
  	public function literalDiplome($intDiplome){
- 		$diplom = $intDiplome;
- 		$lettre;
- 		switch ($diplom){
+ 		$lettre = ""; 
+ 		switch ($intDiplome){
  			case 1:
  				$lettre = "doctorat";
  				break;
@@ -54,9 +61,8 @@
  	}
 
  	public function literalExperience($intExp){
- 		$experience = $intExp;
- 		$lettre;
- 		switch ($experience){
+ 		$lettre ="";
+ 		switch ($intExp){
  			case 1:
  				$lettre = "1 à 5";
  				break;
@@ -70,9 +76,9 @@
  		return $lettre;
  	}
 
- 	public function insertBesoinDept($poste, $justification, $dateDebut, $dateFin, $diplom, $Experience){
- 		$sql = "INSERT INTO besoin VALUES(null, %d, %s, %d, %d, %d)";
- 		$sql=sprintf($poste,$justification,$durer,$diplom,$Experience);
+ 	public function insertBesoinDept($dept, $poste, $justification, $dateDebut, $dateFin, $dateEnd, $datelimit, $diplom, $Experience, $competence){
+ 		$sql = "INSERT INTO besoin VALUES(null, %d, %d, '%s', '%s', '%s','%s','%s',%d, %d, '%s')";
+ 		$sql = sprintf($sql,$dept,$poste,$justification,$dateDebut,$dateFin,$dateEnd,$datelimit,$diplom,$Experience,$competence);
  		try {
  			$this->db->query($sql);
  		} catch (Exception $e) {
@@ -80,6 +86,16 @@
             echo $e->getMessage();
  		}
  	}
+
+    public function getBesoinData($dept){
+        $request = "SELECT id,date_fin_recrutement,date_limit_recrutement FROM besoin WHERE dept = ?";
+        $request = $this->bd->query($request, array($dept));
+        $data = array();
+        foreach ($request->result_array() as $response) {
+            $data[] = $response; 
+        }
+        return $data;
+    }
 
 }
 
