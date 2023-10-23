@@ -11,7 +11,7 @@
 <body>
 	<div id="head">
 		<img src="<?php echo base_url("assets/image/3.png"); ?>">
-		<button id="PopupDRH"><div class="link">Voir les annonces reçu</div></button>
+		<button id="PopupDRH"><div class="link">Ressources Humaines</div></button>
 		<button id="PopupForm"><div class="link">Formulaire des besoins</div></button>
 		
     	<!-- /////////////////////////////////////////////////////////////////////////DRH POP uP -->

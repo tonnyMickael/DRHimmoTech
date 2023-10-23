@@ -1,3 +1,4 @@
+<?php $info['annonce'] = $this->session->userdata('annonceRecru'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
 	<div id="accueil">
 		<a href="<?php echo base_url('ControlDRh/navigation'); ?>">Retour</a>
 	</div>
-	<div>
+	<div id="">
 		<h1>Liste des annonces de recrutements génèrer</h1>
 		<div id="">
 			<table border="2" class="">
@@ -33,16 +34,16 @@
 					<th class="">date fin de recrutement</th>
 					<th class="">date limite de recrutement</th>
 				</tr>
-				<?php for ($i=0; $i < 10; $i++) { ?>
+				<?php for ($i=0; $i < count($info['annonce']); $i++) { ?>
 					<tr class="">
-						<td class=""></td>
-						<td class=""></td>
-						<td class=""></td>
-						<td class=""></td>
-						<td class=""></td>
-						<td class=""><a href="#">modifier</a></td>
-						<td class=""><a href="#">supprimer</a></td>
-						<td class=""><a href="#">détail de l'annonce</a></td>
+						<td class=""><?php echo $info['annonce']['recru'][$i]['Nom_departement'];?></td>
+						<td class=""><?php echo $info['annonce']['recru'][$i]['Poste'];?></td>
+						<td class=""><?php echo $info['annonce']['recru'][$i]['datecreation'];?></td>
+						<td class=""><?php echo $info['annonce']['recru'][$i]['date_fin_recrutement'];?></td>
+						<td class=""><?php echo $info['annonce']['recru'][$i]['date_limit_recrutement'];?></td>
+						<td class=""><a href="<?php echo $info['annonce']['recru'][$i]['id'];?>">modifier</a></td>
+						<td class=""><a href="<?php echo $info['annonce']['recru'][$i]['id'];?>">supprimer</a></td>
+						<td class=""><a href="<?php echo $info['annonce']['recru'][$i]['id'];?>">détail de l'annonce</a></td>
 					</tr>
 				<?php } ?>
 			</table>

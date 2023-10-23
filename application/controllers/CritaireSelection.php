@@ -15,8 +15,9 @@ class CritaireSelection extends CI_Controller
 		$experience = $this->input->post('experience');
 
 		$this->load->model('Critere_model','model');
-		$idBesoin['besoin'] = $this->model->besoinID($id);
-		$this->model->insertCritere($idBesoin['besoin'],$sexe,$diplome,$langue,$niveau,$experience);
+		// $idBesoin['besoin'] = $this->model->besoinID($id);
+		// $this->model->insertCritere($idBesoin['besoin'],$sexe,$diplome,$langue,$niveau,$experience);
+		echo "ici";
 	}
 }
 ?>

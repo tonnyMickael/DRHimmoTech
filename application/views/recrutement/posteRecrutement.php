@@ -1,3 +1,4 @@
+<?php $list['Poste'] = $this->session->userdata('annonceRecru'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,11 +26,11 @@
 					<th class="">Poste</th>
 					<th class="">Date fin de recrutement</th>
 				</tr>
-				<?php for ($i=0; $i < 13; $i++) { ?>
+				<?php for ($i=0; $i < count($list['Poste']); $i++) { ?>
 					<tr class="">
-						<td class=""></td>
-						<td class=""></td>
-						<td class=""></td>
+						<td class=""><?php echo $list['Poste']['recru'][$i]['Nom_departement']; ?></td>
+						<td class=""><?php echo $list['Poste']['recru'][$i]['Poste']; ?></td>
+						<td class=""><?php echo $list['Poste']['recru'][$i]['date_fin_recrutement']; ?></td>
 						<td class=""><a href="<?php echo base_url("Cv_recru/detailAnnonce");?>">Détail</a></td>
 					</tr>
 				<?php } ?>

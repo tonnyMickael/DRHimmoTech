@@ -43,6 +43,15 @@ INSERT INTO posteDepartement VALUES (null,4,'secretaire');
 INSERT INTO posteDepartement VALUES (null,4,'sous-secretaire');
 INSERT INTO posteDepartement VALUES (null,4,'chef services');
 
+-- jointure dept_poste
+CREATE VIEW dept_poste AS SELECT depart.id as idDepart, 
+								 posteDepart.id as idPoste, 
+								 Nom_departement, Reference, 
+								 Poste 
+						  FROM departement depart 
+						  JOIN posteDepartement posteDepart 
+						  ON depart.id = posteDepart.idDept; 
+
 -- table besoin
 CREATE TABLE besoin(
 	id int auto_increment PRIMARY KEY,
@@ -52,13 +61,48 @@ CREATE TABLE besoin(
 	dateDebut date,
 	dateFin date,
 	date_fin_recrutement date,
-	date_limit_recrutement date,
+	date_limit_recrutement date,				
+	datecreation date,
 	diplom int,
 	Experience int,
 	competence varchar(500),
 	FOREIGN KEY (dept) REFERENCES departement(id),
 	FOREIGN KEY (poste) REFERENCES posteDepartement(id)
 );
+
+-- nettoyer une table 
+DELETE FROM ma_table;
+DELETE FROM ma_table WHERE colonne_x = 'valeur';
+
+/*
+	CREATE VIEW ma_vue AS
+	SELECT table1.colonne1, table1.colonne2, table2.colonne3
+	FROM table1
+	INNER JOIN table2 ON table1.colonneX = table2.colonneY;
+
+	CREATE VIEW ma_vue AS
+	SELECT
+    	t1.colonne1 AS colonne_table1,
+    	t2.colonne1 AS colonne_table2,
+    	t1.colonne2 AS colonne_table1_2,
+    	t2.colonne2 AS colonne_table2_2
+	FROM
+    	table1 t1
+	JOIN
+    	table2 t2
+	ON
+    	t1.id = t2.id;
+*/
+-- jointure besoin_dept_poste
+CREATE VIEW annonce_recrutement AS SELECT besoin.id,
+										  dept_poste.Nom_departement, 
+										  dept_poste.Poste, 
+										  besoin.datecreation, 
+										  besoin.date_fin_recrutement, 
+										  besoin.date_limit_recrutement 
+							       FROM besoin 
+							       JOIN dept_poste 
+							       ON (besoin.dept = dept_poste.idDepart AND besoin.poste = dept_poste.idPoste); 
 
 --  table critere
 CREATE TABLE critere(
@@ -69,14 +113,6 @@ CREATE TABLE critere(
 	niveau int,
 	diplome int,
 	experience int,
-	FOREIGN KEY (besoin) REFERENCES besoin(id)
-);
-
--- table annonce
-CREATE TABLE annonce(
-	id int auto_increment PRIMARY KEY,
-	besoin int,
-	datecreation date,
 	FOREIGN KEY (besoin) REFERENCES besoin(id)
 );
 

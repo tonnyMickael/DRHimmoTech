@@ -24,7 +24,7 @@ class Critere_model extends CI_Controller
         foreach ($query->result_array() as $idBesoin) {
             $id[] = $idBesoin;
         }
-        return $id;
+        return $sql;
     }
 }
 

@@ -8,6 +8,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 		public function generateRecrutement()
 		{
+			$this->load->model('GenerateAnnonce_model','model');
+			$annonce['recru'] = $this->model->generation();
+			$this->session->set_userdata('annonceRecru',$annonce);
 			$this->load->view('Annonce/generateAnnonce');
 		}
 	}
