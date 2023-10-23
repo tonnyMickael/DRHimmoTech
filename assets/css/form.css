@@ -1,6 +1,6 @@
 #intros{
 	width: 900px;
-	height: 620px;
+	height: 690px;
 	border: 1px solid;
 	text-align: center;
 	margin: auto;
@@ -37,7 +37,7 @@ p{
 	height: 130px;
 	margin-left: 145px;	
 }
-#date{
+.date{
  	width: 450px;
 	height: 35px;
 	margin-left: 100px;
@@ -68,4 +68,15 @@ p{
  	height: 35px;
  	font-size: 20px;
  	font-style: oblique;
+}
+#accueil{
+	text-align: center;
+	padding: 5px;
+	width: 100px;
+	height: 25px;
+	border: 1.5px black solid;
+	background-color: red;
+	font-size: 25px;
+	border-radius: 10.5px;
+	position: fixed;
 }

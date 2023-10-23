@@ -130,6 +130,11 @@ projet web application for SRH:
                     (NAME: "controleAnnonce" FONCTION: generer les titre des annonces et la liste des annonces)
             
             -base:
+                .table annonce
+                    .idAnnonvce primary key auto_increment
+                    .titre annonce varchar
+                    .datecreation date
+    
                 -create view generateTitle as select 
                             d.referenceDept as ReferenceDept, 
                             p.NomPoste as NomPoste, 
@@ -140,6 +145,8 @@ projet web application for SRH:
                     
 
     3.formulaire de collecte du cv
+        @description
+        **
     4.analyse des cv recu avec teste de macth avec les critaires donnee par les services
     5.generer les questionnaire des services
     6.programmer le calendrier des entretiens
