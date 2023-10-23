@@ -19,6 +19,12 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index(){
+		$checkOne = $this->session->userdata('DeptDemande');
+		$checkTwo = $this->session->userdata('refPosteDept');
+		if (isset($checkOne) && isset($checkTwo)) {
+			$this->session->unset_userdata('DeptDemande');
+			$this->session->unset_userdata('refPosteDept');
+		}
 		$this->load->model('Litteral','model');
 		$Dept['Service'] = $this->model->DepartementName();
 		$this->session->set_userdata('deptName',$Dept);
