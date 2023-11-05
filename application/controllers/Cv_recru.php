@@ -9,8 +9,8 @@
  		$this->load->view("CV_Candidat/CV_Postulant");
  	}
 
-    public function detailAnnonce(){
-        $this->load->view("recrutement/detailAnnonce");
-    }
+   public function detailAnnonce(){
+      $this->load->view("recrutement/detailAnnonce");
+   }
  }
 ?>

@@ -19,9 +19,10 @@ class BesoinDept extends CI_Controller{
 		$diplom = $this->input->post('diplome');
 		$experience = $this->input->post('experience');
 		$competence = $this->input->post('competence');
+		$mission = $this->input->post('mission');
 
 		$this->load->model('Litteral','model');
-		$this->model->insertBesoinDept($dept,$poste,$justification,$debut,$fin,$termine,$limite,$creation,$diplom,$experience,$competence);
+		$this->model->insertBesoinDept($dept,$poste,$justification,$debut,$fin,$termine,$limite,$creation,$diplom,$experience,$competence,$mission);
 		$this->load->view("formulaire_besoin/FormulaireStandard");
 	}	
 }

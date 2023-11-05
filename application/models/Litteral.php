@@ -76,9 +76,9 @@
  		return $lettre;
  	}
 
- 	public function insertBesoinDept($dept, $poste, $justification, $dateDebut, $dateFin, $dateEnd, $datelimit, $datecreation, $diplom, $Experience, $competence){
- 		$sql = "INSERT INTO besoin VALUES(null, %d, %d, '%s', '%s', '%s','%s','%s','%s',%d, %d, '%s')";
- 		$sql = sprintf($sql,$dept,$poste,$justification,$dateDebut,$dateFin,$dateEnd,$datelimit,$datecreation,$diplom,$Experience,$competence);
+ 	public function insertBesoinDept($dept, $poste, $justification, $dateDebut, $dateFin, $dateEnd, $datelimit, $datecreation, $diplom, $Experience, $competence,$mission){
+ 		$sql = "INSERT INTO besoin VALUES(null, %d, %d, '%s', '%s', '%s','%s','%s','%s',%d, %d, '%s', '%s')";
+ 		$sql = sprintf($sql,$dept,$poste,$justification,$dateDebut,$dateFin,$dateEnd,$datelimit,$datecreation,$diplom,$Experience,$competence,$mission);
  		try {
  			$this->db->query($sql);
  		} catch (Exception $e) {

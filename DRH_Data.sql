@@ -66,6 +66,7 @@ CREATE TABLE besoin(
 	diplom int,
 	Experience int,
 	competence varchar(500),
+	mission varchar(500),
 	FOREIGN KEY (dept) REFERENCES departement(id),
 	FOREIGN KEY (poste) REFERENCES posteDepartement(id)
 );
@@ -103,6 +104,15 @@ CREATE VIEW annonce_recrutement AS SELECT besoin.id,
 							       FROM besoin 
 							       JOIN dept_poste 
 							       ON (besoin.dept = dept_poste.idDepart AND besoin.poste = dept_poste.idPoste); 
+
+CREATE VIEW detail_mission AS SELECT besoin.id,
+									 dept_poste.Nom_departement,
+									 dept_poste.Poste,
+									 besoin.competence,
+									 besoin.mission
+							  FROM besoin
+							  JOIN dept_poste
+							  ON (besoin.dept = dept_poste.idDepart AND besoin.poste = dept_poste.idPoste);	
 
 --  table critere
 CREATE TABLE critere(
