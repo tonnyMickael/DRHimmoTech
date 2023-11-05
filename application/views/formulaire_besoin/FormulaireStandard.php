@@ -18,7 +18,6 @@
 		<img src="<?php echo base_url("assets/image/4.png"); ?>">
 		<button id="Critepop"><div class="link">ajouter critère de sélection</div></button>
 		<a href="<?php echo base_url('Question/CreationQuestion'); ?>" class="links">Créer les questionnaires</a>
-		
     	<!-- /////////////////////////////////////////////////////////////////////////DRH POP uP -->
     	<?php include("application/views/pop_up/PopUP_critere.php");?>
 
