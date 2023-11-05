@@ -90,6 +90,10 @@
 				<label class="label">Compétence requise:</label>
 					<input type="text" name="competence" id="competence" placeholder="séparer par un virgule les competences requise">
 			</p>
+			<p>
+				<label class="label">Mission à accomplir:</label>
+					<input type="text" name="misson" id="competence" placeholder="séparer par un virgule les competences requise">
+			</p>
 			<input type="submit" value="Valider" id="button">				  				
 		</form>
 	</div>

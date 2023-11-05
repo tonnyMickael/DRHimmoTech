@@ -31,7 +31,7 @@
 						<td class=""><?php echo $list['Poste']['recru'][$i]['Nom_departement']; ?></td>
 						<td class=""><?php echo $list['Poste']['recru'][$i]['Poste']; ?></td>
 						<td class=""><?php echo $list['Poste']['recru'][$i]['date_fin_recrutement']; ?></td>
-						<td class=""><a href="<?php echo base_url("Cv_recru/detailAnnonce");?>">Détail</a></td>
+						<td class=""><a href="<?php echo base_url("Cv_recru/detailAnnonce");?>?id=<?php echo $list['Poste']['recru'][$i]['id']; ?>">Détail</a></td>
 					</tr>
 				<?php } ?>
 			</table>
